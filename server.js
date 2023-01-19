@@ -73,7 +73,7 @@ app.delete('/products/:id', (req, res) =>{
 app.get('/products/generateReport', (req, res) => {
     getDb().collection(products).aggregate([
         {
-            $group: { _id: "$name", wartosc: {$multiply: [ "$price", "$quantity" ]}}
+            $group: { _id: "$name", ilosc: 1, wartosc: {$multiply: [ "$price", "$quantity" ]}}
         }
     ]).toArray().then((result) => {
         res.send(result)
